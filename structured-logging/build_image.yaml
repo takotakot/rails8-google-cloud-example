@@ -1,0 +1,9 @@
+steps:
+# Build the image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia-northeast1-docker.pkg.dev/${PROJECT_ID}/structured-logging/structured-logging', '.']
+# Push the image to Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-northeast1-docker.pkg.dev/${PROJECT_ID}/structured-logging/structured-logging']
+images:
+- 'asia-northeast1-docker.pkg.dev/${PROJECT_ID}/structured-logging/structured-logging'
