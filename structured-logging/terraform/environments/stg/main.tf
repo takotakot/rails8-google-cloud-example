@@ -21,3 +21,17 @@ resource "google_project_service" "services" {
   disable_dependent_services = true
   disable_on_destroy         = false
 }
+
+# Artifact Registry Repository
+resource "google_artifact_registry_repository" "structured-logging" {
+  location      = var.region
+  provider      = google
+  repository_id = "structured-logging"
+  format        = "docker"
+
+  depends_on = [google_project_service.services["artifactregistry.googleapis.com"]]
+}
+
+output "artifact_registry_repository_structured-logging_url" {
+  value = "${var.region}-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.structured-logging.repository_id}"
+}
