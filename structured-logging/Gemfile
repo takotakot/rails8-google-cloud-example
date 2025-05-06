@@ -65,3 +65,5 @@ end
 gem "google-cloud-logging"
 
 gem "google-cloud-trace"
+
+gem "rails_semantic_logger"
