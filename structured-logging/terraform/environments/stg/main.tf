@@ -35,3 +35,18 @@ resource "google_artifact_registry_repository" "structured-logging" {
 output "artifact_registry_repository_structured-logging_url" {
   value = "${var.region}-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.structured-logging.repository_id}"
 }
+
+# Secret Managerのシークレット作成
+resource "google_secret_manager_secret" "rails_master_key" {
+  secret_id = "rails-master-key"
+
+  replication {
+    auto {}
+  }
+
+  lifecycle {
+    ignore_changes = []
+  }
+
+  depends_on = [google_project_service.services["secretmanager.googleapis.com"]]
+}
