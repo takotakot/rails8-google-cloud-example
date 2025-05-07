@@ -96,9 +96,10 @@ resource "google_cloud_run_v2_service" "structured-logging" {
       }
 
       startup_probe {
-        failure_threshold = 3
-        period_seconds    = 5
-        timeout_seconds   = 5
+        initial_delay_seconds = 15
+        failure_threshold     = 5
+        period_seconds        = 5
+        timeout_seconds       = 5
         http_get {
           path = "/up"
         }
