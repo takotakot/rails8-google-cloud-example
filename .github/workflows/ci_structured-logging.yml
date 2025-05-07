@@ -19,7 +19,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: structured-logging/.ruby-version
+          # ruby-version: structured-logging/.ruby-version
+          ruby-version: '3.4'
           bundler-cache: true
           working-directory: structured-logging
 
@@ -39,7 +40,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: structured-logging/.ruby-version
+          # ruby-version: structured-logging/.ruby-version
+          ruby-version: '3.4'
           bundler-cache: true
           working-directory: structured-logging
 
@@ -59,7 +61,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: structured-logging/.ruby-version
+          # ruby-version: structured-logging/.ruby-version
+          ruby-version: '3.4'
           bundler-cache: true
           working-directory: structured-logging
 
@@ -88,7 +91,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: structured-logging/.ruby-version
+          # ruby-version: structured-logging/.ruby-version
+          ruby-version: '3.4'
           bundler-cache: true
           working-directory: structured-logging
 
