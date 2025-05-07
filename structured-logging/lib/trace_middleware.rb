@@ -44,7 +44,7 @@ class TraceMiddleware
     trace_id = trace_id.dup.to_s
 
     # 各位置にハイフンを挿入（文字列長をチェックしながら）
-    [8, 13, 18, 23].each do |pos|
+    [ 8, 13, 18, 23 ].each do |pos|
       break if trace_id.length <= pos
       trace_id.insert(pos, "-")
     end
