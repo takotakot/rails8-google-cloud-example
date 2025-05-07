@@ -90,6 +90,11 @@ resource "google_cloud_run_v2_service" "structured-logging" {
         }
       }
 
+      env {
+        name  = "PROJECT_ID"
+        value = var.project_id
+      }
+
       startup_probe {
         failure_threshold = 3
         period_seconds    = 5
