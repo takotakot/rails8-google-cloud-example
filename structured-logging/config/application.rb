@@ -14,8 +14,8 @@ module StructuredLogging
     config.load_defaults 8.0
 
     # Extract traceparent and set `env[:traceparent]` and `env[:trace_id]`.
-    config.middleware.insert_after 0, TraceMiddleware
-    # config.middleware.insert_after ActionDispatch::RequestId, TraceMiddleware
+    # config.middleware.insert_after 0, TraceMiddleware
+    config.middleware.insert_after ActionDispatch::RequestId, TraceMiddleware
 
     config.rails_semantic_logger.started = true
     config.rails_semantic_logger.add_file_appender = false
