@@ -12,7 +12,7 @@ class TraceMiddleware
 
     # ヘッダーからtrace_idを抽出、
     # ない場合はSecureRandom.uuidを使用
-    env[:trace_id]  = make_trace_id(trace_parent)
+    env[:trace_id] = make_trace_id(trace_parent)
 
     @app.call(env)
   end
