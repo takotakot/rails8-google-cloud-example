@@ -62,8 +62,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "google-cloud-logging"
+# gem "google-cloud-logging"
 
-gem "google-cloud-trace"
+# gem "google-cloud-trace"
 
 gem "rails_semantic_logger"
