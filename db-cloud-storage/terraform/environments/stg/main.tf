@@ -143,10 +143,16 @@ resource "google_cloud_run_v2_service" "db-cloud-storage" {
         }
       }
 
+      volume_mounts {
+        name = "sqlite-bucket"
+        # See Dockerfile WORKDIR
+        mount_path = "/rails/storage"
+      }
+
     }
 
     volumes {
-      name = "bucket"
+      name = "sqlite-bucket"
       gcs {
         bucket    = google_storage_bucket.sqlite_bucket.name
         read_only = false
