@@ -8,6 +8,14 @@ fi
 
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+
+  if [ "${LITESTREAM_REPLICA_BUCKET}" ]; then
+    # Restore databases
+    for db in ".sqlite3" "_cable.sqlite3" "_cache.sqlite3" "_queue.sqlite3"; do
+      ./bin/rails litestream:restore -- --database="storage/${RAILS_ENV}${db}" --if-replica-exists
+    done
+  fi
+
   ./bin/rails db:prepare
 fi
 
