@@ -106,11 +106,16 @@ resource "google_cloud_run_v2_service" "db-cloud-storage" {
       image = "${var.region}-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.db-cloud-storage.repository_id}/db-cloud-storage:latest"
 
       ports {
-        container_port = 80
+        container_port = 8080
       }
 
       env {
-        name = "rails_master_key"
+        name  = "HTTP_PORT"
+        value = "8080"
+      }
+
+      env {
+        name = "RAILS_MASTER_KEY"
         value_source {
           secret_key_ref {
             secret  = google_secret_manager_secret.rails_master_key_gcs.secret_id
@@ -131,6 +136,7 @@ resource "google_cloud_run_v2_service" "db-cloud-storage" {
         timeout_seconds       = 1
         http_get {
           path = "/up"
+          port = 8080
         }
       }
 
@@ -140,6 +146,7 @@ resource "google_cloud_run_v2_service" "db-cloud-storage" {
         timeout_seconds   = 5
         http_get {
           path = "/up"
+          port = 8080
         }
       }
 
