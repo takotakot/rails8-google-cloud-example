@@ -129,6 +129,11 @@ resource "google_cloud_run_v2_service" "db-litestream" {
         value = var.project_id
       }
 
+      env {
+        name  = "LITESTREAM_REPLICA_BUCKET"
+        value = google_storage_bucket.sqlite_bucket.name
+      }
+
       startup_probe {
         initial_delay_seconds = 10
         failure_threshold     = 180
