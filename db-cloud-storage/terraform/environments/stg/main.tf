@@ -188,6 +188,7 @@ resource "google_cloud_run_v2_service" "db-cloud-storage" {
   #     latest_revision = true
   #     percent         = 100
   #   }
+  deletion_protection = false
 
   depends_on = [
     google_project_service.services["run.googleapis.com"],
