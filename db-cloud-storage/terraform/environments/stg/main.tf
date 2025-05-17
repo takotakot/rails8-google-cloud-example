@@ -130,7 +130,7 @@ resource "google_cloud_run_v2_service" "db-cloud-storage" {
       }
 
       startup_probe {
-        initial_delay_seconds = 0
+        initial_delay_seconds = 10
         failure_threshold     = 180
         period_seconds        = 1
         timeout_seconds       = 1
