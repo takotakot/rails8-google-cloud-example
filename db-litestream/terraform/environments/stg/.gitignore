@@ -1,0 +1,3 @@
+secret.tf
+.tfvars
+.terraform/

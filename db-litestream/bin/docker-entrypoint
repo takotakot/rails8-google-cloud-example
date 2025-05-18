@@ -1,0 +1,22 @@
+#!/bin/bash -e
+
+# Enable jemalloc for reduced memory usage and latency.
+if [ -z "${LD_PRELOAD+x}" ]; then
+    LD_PRELOAD=$(find /usr/lib -name libjemalloc.so.2 -print -quit)
+    export LD_PRELOAD
+fi
+
+# If running the rails server then create or migrate existing database
+if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+
+  if [ "${LITESTREAM_REPLICA_BUCKET}" ]; then
+    # Restore databases
+    for db in ".sqlite3" "_cable.sqlite3" "_cache.sqlite3" "_queue.sqlite3"; do
+      ./bin/rails litestream:restore -- --database="storage/${RAILS_ENV}${db}" --if-replica-exists
+    done
+  fi
+
+  ./bin/rails db:prepare
+fi
+
+exec "${@}"

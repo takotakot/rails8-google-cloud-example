@@ -1,0 +1,8 @@
+gen1
+time curl -X POST https://db-litestream-886786442757.asia-northeast1.run.app/count_up
+{"count":1344}curl -X POST   0.05s user 0.02s system 0% cpu 29.072 total
+
+gen2
+time curl -X POST https://db-litestream-886786442757.asia-northeast1.run.app/count_up
+{"count":8122}curl -X POST   0.07s user 0.00s system 0% cpu 24.300 total
+
