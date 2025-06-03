@@ -62,4 +62,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "litestream", "~> 0.12.0"
+gem "litestream", "~> 0.13.0"
