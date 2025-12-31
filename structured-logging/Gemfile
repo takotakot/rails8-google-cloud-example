@@ -67,3 +67,6 @@ end
 # gem "google-cloud-trace"
 
 gem "rails_semantic_logger"
+
+# Pin version.
+gem "minitest", "!=6.0.1"
