@@ -69,4 +69,4 @@ end
 gem "rails_semantic_logger"
 
 # Pin version.
-gem "minitest", "!=6.0.1"
+gem "minitest", ">=0"
